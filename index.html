@@ -97,62 +97,61 @@
         100% { transform: rotate(360deg); }
       }
     </style>
+    <script type="text/javascript">
+      window.onload = function(){
+        var agent = navigator.userAgent;
+        var isWechat = /MicroMessenger/.test(agent);
+        var isIos = /iPhone|iPad|iPod/.test(agent);
+        var isAndroid = /Android/.test(agent);
+        if (isWechat) {
+          document.getElementById("wechat-notice").style.display = "block";
+          document.getElementById("downloadLink").style.display = "none";
+        } else if (isIos) {
+          document.getElementById("wechat-notice").style.display = "none";
+          document.getElementById("downloadLink").style.display = "block";
+          document.getElementById("downloadIos").style.display = "block";
+          document.getElementById("downloadAndroid").style.display = "none";
+        } else if (isAndroid) {
+          document.getElementById("wechat-notice").style.display = "none";
+          document.getElementById("downloadLink").style.display = "block";
+          document.getElementById("downloadIos").style.display = "none";
+          document.getElementById("downloadAndroid").style.display = "block";
+        } else {
+          document.getElementById("wechat-notice").style.display = "none";
+          document.getElementById("downloadLink").style.display = "none";
+        }
+      }
+
+      function delayShowDownload() {
+        setTimeout(downloadIpa, 1000);
+      };
+      function downloadIpa() {
+        var element = document.getElementById("download-link");
+        var iosInfo = document.getElementById("info");
+        iosInfo.innerHTML = "点安装后，去主页等候安装...";
+        iosInfo.classList.add("downloading")
+        element.classList.add("loader");
+      };
+      function downloadApk() {
+        var iosInfo = document.getElementById("info");
+        var element = document.getElementById("download-link");
+        iosInfo.innerHTML = "嘻游记正在下载中...";
+        iosInfo.classList.add("downloading");
+        element.classList.add("loader");
+        setTimeout(() => { window.close() }, 20000);
+      };
+    </script>
   </head>
-  <body>
-<div id="download-bg">
-  <img class="download-icon" src="./icon.png">
-  <div id="wechat-notice" class="wechat-notice" style="display: none">点击右上角并选择在浏览器中浏览</div>
-  <div id="downloadLink">
-    <div id="info">嘻游记app</div>
-    <a id="downloadIos" href="itms-services://?action=download-manifest&url=https://xiyoujikeji.colorfulberry.io/app.plist" class="download-button" id="download-link" onclick="delayShowDownload()" download>点击下载</a>
-    <a id="downloadAndroid" href="https://xiyoujikeji.github.io/xyj.apk" class="download-button" id="download-link" target="_self" onclick="downloadApk()" download>点击下载</a>
-  </div>
-</div>
-
-<script type="text/javascript">
-  window.onload = function(){
-    var agent = navigator.userAgent;
-    var isWechat = /MicroMessenger/.test(agent);
-    var isIos = /iPhone|iPad|iPod/.test(agent);
-    var isAndroid = /Android/.test(agent);
-    if (isWechat) {
-      document.getElementById("wechat-notice").style.display = "block";
-      document.getElementById("downloadLink").style.display = "none";
-    } else if (isIos) {
-      document.getElementById("wechat-notice").style.display = "none";
-      document.getElementById("downloadLink").style.display = "block";
-      document.getElementById("downloadIos").style.display = "block";
-      document.getElementById("downloadAndroid").style.display = "none";
-    } else if (isAndroid) {
-      document.getElementById("wechat-notice").style.display = "none";
-      document.getElementById("downloadLink").style.display = "block";
-      document.getElementById("downloadIos").style.display = "none";
-      document.getElementById("downloadAndroid").style.display = "block";
-    } else {
-      document.getElementById("wechat-notice").style.display = "none";
-      document.getElementById("downloadLink").style.display = "none";
-    }
-  }
-
-  function delayShowDownload() {
-    setTimeout(downloadIpa, 1000);
-  };
-  function downloadIpa() {
-    var element = document.getElementById("download-link");
-    var iosInfo = document.getElementById("info");
-    iosInfo.innerHTML = "点安装后，去主页等候安装...";
-    iosInfo.classList.add("downloading")
-    element.classList.add("loader");
-  };
-  function downloadApk() {
-    var iosInfo = document.getElementById("info");
-    var element = document.getElementById("download-link");
-    iosInfo.innerHTML = "嘻游记正在下载中...";
-    iosInfo.classList.add("downloading");
-    element.classList.add("loader");
-    setTimeout(() => { window.close() }, 20000);
-  };
-</script>
+    <body>
+    <div id="download-bg">
+      <img class="download-icon" src="./icon.png">
+      <div id="wechat-notice" class="wechat-notice" style="display: none">点击右上角并选择在浏览器中浏览</div>
+      <div id="downloadLink">
+        <div id="info">嘻游记app</div>
+        <a id="downloadIos" href="itms-services://?action=download-manifest&url=https://xiyoujikeji.colorfulberry.io/app.plist" class="download-button" id="download-link" onclick="delayShowDownload()" download>点击下载</a>
+        <a id="downloadAndroid" href="https://xiyoujikeji.github.io/xyj.apk" class="download-button" id="download-link" target="_self" onclick="downloadApk()" download>点击下载</a>
+      </div>
+    </div>
   </body>
 </html>
 
