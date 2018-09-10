@@ -126,7 +126,7 @@
         setTimeout(downloadIpa, 1000);
       };
       function downloadIpa() {
-        var element = document.getElementById("downloadLinkIos");
+        var element = document.getElementById("downloadIos");
         var iosInfo = document.getElementById("info");
         iosInfo.innerHTML = "点安装后，去主页等候安装...";
         iosInfo.classList.add("downloading")
@@ -134,7 +134,7 @@
       };
       function downloadApk() {
         var iosInfo = document.getElementById("info");
-        var element = document.getElementById("downloadLinkAndroid");
+        var element = document.getElementById("downloadAndroid");
         iosInfo.innerHTML = "嘻游记正在下载中...";
         iosInfo.classList.add("downloading");
         element.classList.add("loader");
@@ -148,8 +148,8 @@
       <div id="wechat-notice" class="wechat-notice" style="display: none">点击右上角并选择在浏览器中浏览</div>
       <div id="downloadLink">
         <div id="info">嘻游记app</div>
-        <a id="downloadIos" href="itms-services://?action=download-manifest&url=https://xiyoujikeji.github.io/app.plist" class="download-button" id="downloadLinkIos" onclick="delayShowDownload()" download>点击下载</a>
-        <a id="downloadAndroid" href="https://xiyoujikeji.github.io/xyj.apk" class="download-button" id="downloadLinkAndroid" target="_self" onclick="downloadApk()" download>点击下载</a>
+        <a id="downloadIos" href="itms-services://?action=download-manifest&url=https://xiyoujikeji.github.io/app.plist" class="download-button" onclick="delayShowDownload()" download>点击下载</a>
+        <a id="downloadAndroid" href="https://xiyoujikeji.github.io/xyj.apk" class="download-button" target="_self" onclick="downloadApk()" download>点击下载</a>
       </div>
     </div>
   </body>
